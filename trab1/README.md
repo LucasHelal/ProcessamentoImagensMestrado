@@ -2,4 +2,4 @@
  * Downsampling
  * Upsampling
 
-![Lena :d][https://github.com/LucasHelal/ProcessamentoImagensMestrado/blob/master/trab1/lena-animation.gif]
+![Lena :d][https://raw.githubusercontent.com/LucasHelal/ProcessamentoImagensMestrado/master/trab1/lena-animation.gif]
