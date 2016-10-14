@@ -1,24 +1,38 @@
 import numpy as np
+import cv2
+import sys
 
-# imagem 4x4 para teste 2D 2UP 4D 4UP
-imagem = np.matrix([[0, 1, 2, 3], [10, 11, 12, 13], [
-                   20, 21, 22, 23], [30, 31, 32, 33]])
-
-print (imagem)
+imagem_cinza = cv2.imread(sys.argv[1], cv2.IMREAD_GRAYSCALE)
 
 
-def downsample(s, n, phase=0):
+def downsample(s, n):
     """Decrementa a taxa de amostragem pelo fator n. """
     return s[::n, ::n]
 
-print ("downsample")
-a = [0, 1, 2, 3, 4]
-operacao_one = downsample(imagem, 2)
-print (operacao_one)
 
-
-def upsample(s, n, phase=0):
+def upsample(s, n):
     """Aumenta a taxa de amostragem pelo fator n. """
     return np.repeat(np.repeat(s, n, axis=0), n, axis=1)
 
-print (upsample(operacao_one, 2, 2))
+
+lena_ds = downsample(imagem_cinza, 2)
+lena_us = upsample(lena_ds, 2)
+
+cv2.imshow("original", imagem_cinza)
+cv2.imshow("lena_ds", lena_ds)
+cv2.imshow("lena_us", lena_us)
+
+lena_ds = downsample(lena_us, 4)
+lena_us = upsample(lena_ds, 4)
+
+cv2.imshow("lena_ds4", lena_ds)
+cv2.imshow("lena_us4", lena_us)
+
+
+lena_ds = downsample(lena_us, 8)
+lena_us = upsample(lena_ds, 8)
+
+cv2.imshow("lena_ds8", lena_ds)
+cv2.imshow("lena_us8", lena_us)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
