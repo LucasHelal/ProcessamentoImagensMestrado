@@ -34,7 +34,6 @@ def Threshold(img, threshold):
 def CorrecaoDeContrasteLinear(imagem_original, imagem_otsu):
     valores = np.where(imagem_otsu == 0)
     correcao_linear = imagem_original[valores]
-    print(np.shape(correcao_linear))
     minimo = np.min(correcao_linear)
     maximo = np.max(correcao_linear)
     a = 255 / (maximo - minimo)
