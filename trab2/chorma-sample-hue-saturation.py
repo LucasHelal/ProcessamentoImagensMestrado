@@ -23,6 +23,6 @@ img_HSV[:, :, 1] = ChromaSample(saturation, k_cores)
 img_final = cv2.cvtColor(img_HSV, cv2.COLOR_HSV2BGR)
 
 cv2.imshow("Original e Final", np.hstack([imagem_rgb, img_final]))
-cv2.imwrite("final-k=16.png ", np.hstack([imagem_rgb, img_final]))
+cv2.imwrite("final-k=16.png", np.hstack([imagem_rgb, img_final]))
 cv2.waitKey(0)
 cv2.destroyAllWindows()
