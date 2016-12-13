@@ -36,12 +36,9 @@ imagem_transformada_filtrada = imagem_transformada * imagem_BW_passa_alta
 imagem_transformada_invertida = np.abs(np.fft.ifft2(
     np.fft.ifftshift(imagem_transformada_filtrada)))
 
-# abacate = cv2.cvtColor(imagem_transformada_invertida, cv2.COLOR_BGR2GRAY)
 imagem_equalizada = exposure.equalize_hist(imagem_transformada_invertida)
 
 cv2.imshow("Original", imagem_cinza)
-# cv2.imshow("Transformada", imagem_transformada)
-# cv2.imshow("Transformada", imagem_transformada_filtrada)
 cv2.imshow("Filtro BW", imagem_BW_passa_alta)
 cv2.imshow("Imagem Invertida", imagem_transformada_invertida)
 cv2.imwrite("Imagem_Invertida.png", imagem_transformada_invertida)
