@@ -15,7 +15,7 @@ imagem_cinza = cv2.imread(sys.argv[1], 0)
 imagem_transformada = np.fft.fftshift(np.fft.fft2(imagem_cinza))
 
 
-def ButterworthPassaBaixa(shape, f, n):
+def Butterworth(shape, f, n):
     linha, coluna = shape
     x = np.linspace(-0.5, 0.5, coluna) * coluna
     y = np.linspace(-0.5, 0.5, linha) * linha
@@ -25,7 +25,7 @@ def ButterworthPassaBaixa(shape, f, n):
 
 
 def ButterworthPassaAlta(shape, f, n):
-    passa_alta = 1. - ButterworthPassaBaixa(shape, f, n)
+    passa_alta = 1. - Butterworth(shape, f, n)
     return passa_alta
 
 
